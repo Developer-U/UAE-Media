@@ -1,0 +1,124 @@
+/*Header*/
+
+.header__wrapper {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--grey);
+}
+
+.header__logo {
+    width: 180px;
+    height: auto;
+}
+
+.icons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.icons li {
+    width: 28px;
+    height: 28px;
+}
+
+.icons__item {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.icons__item.heart {
+    background-image: url('../img/heart.svg');
+}
+
+.icons__item.ring {
+    background-image: url('../img/bell-ringing.svg');
+}
+
+.icons__item.user {
+    background-image: url('../img/user.svg');
+}
+
+.header-bottom {
+    grid-template-columns: 36px auto;
+    gap: 40px;
+}
+
+body .menu {
+    gap: 25px;
+    width: fit-content;
+}
+
+body .menu {
+    gap: 25px;
+    width: fit-content;
+}
+
+body .menu li {
+    background-color: var(--light-grey);
+    border-radius: 10px;
+    height: 32px;
+    padding: 4px 20px;
+}
+
+body .header * {
+    font-family: var(--theme-button-font-family);
+}
+
+body .menu li a {
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 100%;
+}
+
+.icons__language {
+    align-self: flex-end;
+}
+
+/*Header end*/
+
+
+/*First news*/
+
+.block__wrap {
+    grid-template-columns: 1fr 282px;
+    padding-top: 48px;
+}
+
+.block-main {
+    padding-right: 10px;
+    border-right: 1px solid var(--light-grey);
+}
+
+.block-sidebar {
+    background-color: var(--light-grey);
+    padding-left: 10px;
+}
+
+.block-first {
+    grid-template-columns: 30% 70%;
+}
+
+.block-first__picture {
+    padding-left: 10px;
+    border-left: 1px solid var(--light-grey);
+}
+
+.cat-button {
+    margin-bottom: 40px;
+}
+
+.first-list__item:not(:last-of-type) {
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--light-grey);
+    margin-bottom: 24px;
+}
+.first-list__item a {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/*First news end*/

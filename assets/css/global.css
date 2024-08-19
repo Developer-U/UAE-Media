@@ -1,0 +1,63 @@
+/*Global*/
+
+:root {
+    --black: #000000;
+    --white: #fff;
+    --red: #FF0A0A;
+    --pink: #FDF6F2;
+    --light-grey: #F5F5F5;
+    --grey: #9A9A9A;
+    --dark-grey: #373737;    
+}
+
+body p {
+    margin-bottom: inherit;
+}
+
+body .container {
+    max-width: 1200px;
+}
+
+figure {
+    overflow: hidden;
+}
+
+figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+body ul,
+body li {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: inherit;
+}
+
+.pink {
+    background-color: var(--pink);
+}
+
+.dark {
+    background-color: var(--dark-grey);
+}
+
+.dark * {
+    color: var(--white);
+}
+
+body .button {
+    font-family: var(--theme-button-font-family);
+    color: var(--red);
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 120%;
+    min-height: 32px;
+    padding: 4px 20px;
+    background-color: var(--pink);
+    border-radius: 10px;
+    text-transform: uppercase;
+    width: fit-content;
+}
