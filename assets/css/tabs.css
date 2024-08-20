@@ -1,0 +1,7 @@
+.js-targetTabs, .js-targetImage {
+    display: none;
+}
+.js-targetTabs.active, .js-targetImage.active {
+    display: block;
+}
+

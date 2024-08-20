@@ -4,23 +4,27 @@
  */
 ?>
 
-    <section class="block">
-        <div class="container">
-            <div class="block__wrap d-grid">
-                <div class="block__main block-main">
-                    <div class="block-main__first block-first d-grid">
-                        <?php    
-                                        
-                        $hot_news_args =  array(
-                            'orderby'      => 'name',
-                            'order'        => 'DESC',
+<section class="block">
+    <div class="container">
+        <div class="block__wrap d-grid">
+            <div class="block__main block-main">
+                <?php
+                $first_top_news_cat = get_field('first_top_news_cat_' . get_locale() . '', 'options');
+
+                if ($first_top_news_cat) { ?>
+                    <div class="block-main__first block-first under-line d-grid">
+                        <?php
+
+                        $hot_news_args = array(
+                            'orderby' => 'name',
+                            'order' => 'DESC',
                             'posts_per_page' => 3,
                             'post_type' => 'post',
-                            'post_status' => 'publish',  
-                            'cat' => 48,
-                                
+                            'post_status' => 'publish',
+                            'cat' => $first_top_news_cat,
+
                         );
-                        $cat = get_category( 48 );
+                        $cat = get_category($first_top_news_cat);
 
                         query_posts($hot_news_args);
                         ?>
@@ -29,16 +33,16 @@
 
                             <ul class="block-first__list first-list">
                                 <?php
-                                if(have_posts() ){
-                                while( have_posts() ){
-                                    the_post();
-                                    ?>
+                                if (have_posts()) {
+                                    while (have_posts()) {
+                                        the_post();
+                                        ?>
 
-                                    <li class="first-list__item">
-                                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                    </li>
+                                        <li class="first-list__item">
+                                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                        </li>
 
-                                <?php }
+                                    <?php }
                                     wp_reset_query();
                                 } ?>
                             </ul>
@@ -46,92 +50,80 @@
 
                         <figure class="block-first__picture">
                             <?php
-                            $center_news_args =  array(
-                                'orderby'      => 'name',
-                                'order'        => 'DESC',
+                            $center_news_args = array(
+                                'orderby' => 'name',
+                                'order' => 'DESC',
                                 'posts_per_page' => 1,
                                 'post_type' => 'post',
-                                'post_status' => 'publish',  
-                                'cat' => 48,                                    
+                                'post_status' => 'publish',
+                                'cat' => 48,
                             );
                             query_posts($center_news_args);
 
-                            if( have_posts() ){
-                            while( have_posts() ){
-                                the_post();
-                                
-                                if (has_post_thumbnail()) { 
-                                    the_post_thumbnail('full'); 
-                                }
+                            if (have_posts()) {
+                                while (have_posts()) {
+                                    the_post();
 
-                            }
+                                    if (has_post_thumbnail()) {
+                                        the_post_thumbnail('full', get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', TRUE));
+                                    }
+
+                                }
                                 wp_reset_query();
                             } ?>
                         </figure>
                     </div>
-                    <div class="block-main__second">
-                        
-                    </div>
-                </div>
+                <?php }
 
-                <aside class="block__sidebar block-sidebar">
+                $first_bottom_left_news_cat = get_field('first_bottom_left_news_cat_' . get_locale() . '', 'options'); ?>
+
+                <div class="block-main__second block-first d-grid">
                     <?php
-                    $arg_cat = array(
-                        'orderby'      => 'name',
-                        'order'        => 'ASC',
-                        'hide_empty'   => 1,
-                        'exclude'      => '',
-                        'include'      => '',
-                        'taxonomy'     => 'category',
-                        'post_type' => 'post',
-                    );
-                    $categories = get_categories( $arg_cat );
-                    ?>
+                    if ($first_bottom_left_news_cat) { ?>
 
-                    <div class="block-sidebar__cats right-sidebar-cat-list d-flex">
-                        <?php 
-                        if( $categories ){
-                            $i = 0;
-                            foreach( $categories as $cat ){
-                                $index = $i++;
-                                echo '<button class="button" data-tab=" ' . $index . '">' . $cat->name . '</button>';	
-                                }
-                            }
-                        ?>
-                    </div>
-
-                    <?php 
-                    if( $categories ){
-                        $n = 0;
-                        foreach( $categories as $cat ){
-                            $target = $n++;
-
-                            $arg_posts =  array(
-                                'orderby'      => 'name',
-                                'order'        => 'DESC',
-                                'posts_per_page' => 3,
+                        <div class="block-first__list">
+                            <?php
+                            $hot_news_2_args = array(
+                                'orderby' => 'name',
+                                'order' => 'DESC',
+                                'posts_per_page' => 5,
                                 'post_type' => 'post',
                                 'post_status' => 'publish',
-                                'cat' => $cat->cat_ID,
+                                'cat' => 15,
+
                             );
-                            $query = new WP_Query($arg_posts);                    
+                            $cat = get_category(15);
+
+                            query_posts($hot_news_2_args);
                             ?>
+                            <a class="button cat-button" href="<?php echo $cat->link; ?>"><?php echo $cat->name; ?></a>
 
-                            <ul class="block-first__list first-list" data-target="<?php echo $target; ?>">
+                            <ul class="block-first__list first-list">
+                                <?php
+                                if (have_posts()) {
+                                    while (have_posts()) {
+                                        the_post();
+                                        ?>
 
-                                <?php if ($query->have_posts() ) ?>
-                                <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+                                        <li class="first-list__item">
+                                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                        </li>
 
-                                    <li class="first-list__item">
-                                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                    </li>
-
-                                <?php endwhile; wp_reset_postdata()?>
+                                    <?php }
+                                    wp_reset_query();
+                                } ?>
                             </ul>
-                        <?php		
-                        }
-                    } ?>
-                </aside>
+
+                            <button class="button wide">red more</button>
+                        </div>
+
+                    <?php }
+
+                    get_template_part('template-parts/first', 'centered-block'); ?>
+                </div>
             </div>
+
+            <?php get_template_part('template-parts/sidebar', 'first'); ?>
         </div>
-    </section>
+    </div>
+</section>
