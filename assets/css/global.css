@@ -83,7 +83,27 @@ body .button:hover, body .button.active {
     /* padding-bottom: 30px; */
     border-bottom: 1px solid #151515;
 }
+
 .grid-column {
     display: grid;
-    grid-template-rows: 1fr auto;    
+    grid-template-rows: 1fr auto;
+}
+
+.block-four {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+section.block {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+section.block.first {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+section.block.fifth {
+    padding-top: 0;
 }

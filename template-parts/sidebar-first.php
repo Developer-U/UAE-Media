@@ -30,7 +30,7 @@
                     foreach( $categories as $cat ){
                         $index_image = $x++; ?>
                         <figure 
-                            class="block-sidebar__category js-targetImage <?php if( $index_image == 0) { ?>active<?php } ?>"
+                            class="block-sidebar__category d-none d-lg-block js-targetImage <?php if( $index_image == 0) { ?>active<?php } ?>"
                             data-image="<?php echo $index_image; ?>"
                         >
                             <img src="<?php echo z_taxonomy_image_url($cat->term_id, 'full'); ?>" />
@@ -103,5 +103,5 @@
             } ?>
         </div>
         
-        <button class="button wide">red more</button>
+        <?php get_template_part('template-parts/button', 'wide'); ?>
     </aside>

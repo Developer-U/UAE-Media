@@ -1,27 +1,32 @@
-window.addEventListener('DOMContentLoaded', function(){   
-    console.log('Работает');
+window.addEventListener('DOMContentLoaded', function(){ 
     // Открытие табов с разделами и подразделами
     var pathNums = document.querySelectorAll('.js-pathTabs'); // все кнопки табов
-            
-    var targetNums = document.querySelectorAll('.js-targetTabs'); // все контенты табов  
-
-    var targetImages = document.querySelectorAll('.js-targetImage'); // все изображения категорий
 
     pathNums.forEach(function(pathBtn){     
         pathBtn.addEventListener('click', function(event){  
             event.preventDefault();
-            console.log(event.target);
             
-            var path = event.currentTarget.dataset.path; // Определяем индекс раздела               
+            // Найдём родительский блок у табов
+            let currentWrapper = event.target.closest('.block-sidebar');        
+
+            var targetNums = currentWrapper.querySelectorAll('.js-targetTabs'); // все контенты табов 
+            
+            var targetImages = currentWrapper.querySelectorAll('.js-targetImage'); // все изображения категорий
+            
+            var path = event.currentTarget.dataset.path; // Определяем индекс раздела  
+            
+            var targetWrapNums = currentWrapper.querySelectorAll('.js-pathTabs'); // Кнопки данного родителя
 
             // по клику деактивируем все кнопки табов
-            pathNums.forEach(function(eachBtn){                    
-                eachBtn.classList.remove('active');
+            targetWrapNums.forEach(function(eachWrapBtn){                    
+                eachWrapBtn.classList.remove('active');
             }); 
 
             // Активируем текущую кнопку
             var currentBtn = event.currentTarget; // Определяем индекс раздела            
             currentBtn.classList.add('active');
+
+            
             
             // по клику отключаем все контенты
             targetNums.forEach(function(targetNum){                    

@@ -42,3 +42,8 @@ require get_stylesheet_directory() . '/includes/navigations.php';
  * Дублирование записей
  */
 require get_stylesheet_directory() . '/includes/duplicate-types.php';
+
+/**
+ * Search
+ */
+require get_stylesheet_directory() . '/includes/get-search.php';

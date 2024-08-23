@@ -19,10 +19,11 @@ if ($first_bottom_centered_news_cat) { ?>
                 'cat' => $first_bottom_centered_news_cat,
             );
             $cat = get_category($first_bottom_centered_news_cat);
+            $cat_link = get_category_link( $cat );
 
             query_posts($uae_news_args);
             ?>
-            <a class="button cat-button" href="<?php echo $cat->link; ?>"><?php echo $cat->name; ?></a>
+            <a class="button cat-button" href="<?php echo $cat_link; ?>"><?php echo $cat->name; ?></a>
 
             <ul class="block-center-list__list first-list">
                 <?php
@@ -35,7 +36,7 @@ if ($first_bottom_centered_news_cat) { ?>
                         if ($centered_news_index == 0) { ?>
                             <li class="block-center-list__item d-grid">
                                 <div class="block-center-list__left">
-                                    <h5>category</h5>
+                                    <h5><?php the_tags(''); ?></h5>
 
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </div>
@@ -58,7 +59,7 @@ if ($first_bottom_centered_news_cat) { ?>
                                     ?>
                                 </figure>
                                 <div class="block-center-list__left">
-                                    <h5>category</h5>
+                                    <h5><?php the_tags(''); ?></h5>
 
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </div>
@@ -71,6 +72,6 @@ if ($first_bottom_centered_news_cat) { ?>
             </ul>
         </div>
 
-        <button class="button wide">red more</button>
+        <?php get_template_part('template-parts/button', 'wide'); ?>
     </div>
 <?php }
