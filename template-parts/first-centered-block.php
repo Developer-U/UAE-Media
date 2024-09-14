@@ -19,7 +19,7 @@ if ($first_bottom_centered_news_cat) { ?>
                 'cat' => $first_bottom_centered_news_cat,
             );
             $cat = get_category($first_bottom_centered_news_cat);
-            $cat_link = get_category_link( $cat );
+            $cat_link = get_category_link($cat);
 
             query_posts($uae_news_args);
             ?>
@@ -41,23 +41,22 @@ if ($first_bottom_centered_news_cat) { ?>
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </div>
 
-                                <figure>
-                                    <?php
-                                    if (has_post_thumbnail()) {
-                                        the_post_thumbnail('full', get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', TRUE));
-                                    }
-                                    ?>
-                                </figure>
+                                <?php
+                                if (has_post_thumbnail()) {
+                                    echo '<a class="picture-link" href=" ' . get_the_permalink() . '"><figure>';
+                                    the_post_thumbnail('full', get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', TRUE));
+                                    echo '</figure></a>';
+                                } ?>
                             </li>
                         <?php } else { ?>
                             <li class="block-center-list__item left d-grid">
-                                <figure>
-                                    <?php
-                                    if (has_post_thumbnail()) {
-                                        the_post_thumbnail('full', get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', TRUE));
-                                    }
-                                    ?>
-                                </figure>
+                                <?php
+                                if (has_post_thumbnail()) {
+                                    echo '<a class="picture-link" href=" ' . get_the_permalink() . '"><figure>';
+                                    the_post_thumbnail('full', get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', TRUE));
+                                    echo '</figure></a>';
+                                } ?>
+
                                 <div class="block-center-list__left">
                                     <h5><?php the_tags(''); ?></h5>
 
@@ -72,6 +71,8 @@ if ($first_bottom_centered_news_cat) { ?>
             </ul>
         </div>
 
-        <?php get_template_part('template-parts/button', 'wide'); ?>
+        <a class="button wide" href="<?php echo $cat_link; ?>">
+            <?php get_template_part('template-parts/button', 'wide'); ?>
+        </a>
     </div>
 <?php }

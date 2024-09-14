@@ -74,4 +74,19 @@ window.addEventListener('DOMContentLoaded', function(){
       },     
     }); 
 
+    const recommended_news_slider = new Swiper(".recommended-slider", {
+      slidesPerView: 1, 
+      spaceBetween: 4,  
+      autoplay: false,               
+      navigation: {
+        nextEl: ".swiper-button-next.second",
+        prevEl: ".swiper-button-prev.second",
+      },   
+      pagination: {
+        el: '.swiper-pagination.second',
+        type: 'bullets',
+        clickable: true,
+      },     
+    }); 
+
 });

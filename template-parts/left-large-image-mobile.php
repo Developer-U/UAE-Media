@@ -13,13 +13,16 @@
             ?>
 
             <div class="swiper-slide">
-                <figure class="first-news-slider__slide position-relative">
+                <figure class="first-news-slider__slide position-relative">              
                     <?php
                     if (has_post_thumbnail()) {
                         the_post_thumbnail('full', get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', TRUE));
-                    }
-                    ?>
-                    <span class="position-absolute"></span>
+                    } ?>
+                 
+                    <span class="position-absolute">
+                        <a class="picture-link" href="<?php the_permalink(); ?>"></a>
+                    </span>
+                    
                     <a class="position-absolute" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                 </figure>
             </div>

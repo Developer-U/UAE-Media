@@ -51,9 +51,9 @@
                             <li class="first-list__item first cat-sidebar-list__item">
                                 <?php
                                 if (has_post_thumbnail()) {
-                                    echo '<figure class="block-sidebar__category sidebar">';
+                                    echo '<a class="picture-link" href=" ' . get_the_permalink() . '"><figure class="block-sidebar__category sidebar">';
                                     the_post_thumbnail('full', get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', TRUE));
-                                    echo '</figure>';
+                                    echo '</figure></a>';
                                 }
                                 ?>
                                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>

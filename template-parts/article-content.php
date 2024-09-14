@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 ?>
 
 <article class="category-list__item category-item d-grid align-items-start">
-    <a href="<?php the_permalink(); ?>">
+    <a class="picture-link" href="<?php the_permalink(); ?>">
         <figure class="category-item__image">
             <?php
             if (has_post_thumbnail()) { // условие, если есть миниатюра
@@ -24,7 +24,7 @@ if (!defined('ABSPATH')) {
     <div class="category-item__block first-list__item category-block">
         <?php if (get_the_tags()) { ?>
             <div class="category-block__box d-flex align-items-center gap-2">
-                <p class="button tag-name"><?php the_tags(''); ?></p>
+                <?php the_tags('<ul class="d-flex flex-wrap flex-lg-nowrap gap-2 gap-xl-3"><li class="button tag-name">','</li><li class="button tag-name">','</li></ul>'); ?>
             </div>
         <?php } ?>
 

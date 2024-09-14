@@ -44,7 +44,7 @@
                 $n = 3;
                 foreach ($categories as $cat) {
                     $target = $n++;
-
+                    $cat_link = get_category_link($cat);
                     $arg_posts = array(
                         'orderby' => 'name',
                         'order' => 'DESC',
@@ -70,9 +70,9 @@
                                 <?php
                                 if ($news_index == 3) {
                                     if (has_post_thumbnail()) {
-                                        echo '<figure class="block-sidebar__category sidebar">';
+                                        echo '<a class="picture-link" href=" ' . get_the_permalink() . '"><figure class="block-sidebar__category sidebar">';
                                         the_post_thumbnail('full', get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', TRUE));
-                                        echo '</figure>';
+                                        echo '</figure></a>';
                                     }
                                 }
                                 ?>
@@ -82,11 +82,13 @@
                         <?php endwhile;
                         wp_reset_postdata() ?>
                     </ul>
-                <?php
+                    <?php
                 }
             }
         } ?>
     </div>
 
-    <?php get_template_part('template-parts/button', 'wide'); ?>
+    <a class="button wide" href="<?php echo $cat_link; ?>">
+        <?php get_template_part('template-parts/button', 'wide'); ?>
+    </a>
 </section>

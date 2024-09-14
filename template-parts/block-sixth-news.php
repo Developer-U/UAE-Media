@@ -46,12 +46,17 @@ if ($sixth_news_cat) {
                         <li class="first-list__item first">
                             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 
-                            <figure class="block-sidebar__category sidebar">
-                                <?php
-                                if (has_post_thumbnail()) {
-                                    the_post_thumbnail('full', get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', TRUE));
-                                } ?>
-                            </figure>
+                            <?php
+                            if (has_post_thumbnail()) { ?>
+
+                                <a class="picture-link" href="<?php the_permalink(); ?>">
+                                    <figure class="block-sidebar__category sidebar">
+                                        <?php
+                                        the_post_thumbnail('full', get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', TRUE));
+                                        ?>
+                                    </figure>
+                                </a>
+                            <?php } ?>
                         </li>
 
                     <?php }

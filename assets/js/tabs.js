@@ -11,7 +11,9 @@ window.addEventListener('DOMContentLoaded', function(){
 
             var targetNums = currentWrapper.querySelectorAll('.js-targetTabs'); // все контенты табов 
             
-            var targetImages = currentWrapper.querySelectorAll('.js-targetImage'); // все изображения категорий
+            var targetImages = currentWrapper.querySelectorAll('.js-targetImage'); // все изображения категорий   
+            
+            var targetBtns = currentWrapper.querySelectorAll('.js-targetBtn'); // все кнопкит категорий 
             
             var path = event.currentTarget.dataset.path; // Определяем индекс раздела  
             
@@ -37,14 +39,22 @@ window.addEventListener('DOMContentLoaded', function(){
                 targetImage.classList.remove('active');
             }); 
 
+            targetBtns.forEach(function(targetBtn){                    
+                targetBtn.classList.remove('active');
+            }); 
+
             // Закинем в переменную текущий Таб с соответствующим атрибутом data-target       
             var currentTypeTab = document.querySelector(`[data-target="${path}"]`);         
             
             var currentImage = document.querySelector(`[data-image="${path}"]`);    
+
+            var currentBtn = document.querySelector(`[data-btn="${path}"]`); 
         
             currentTypeTab.classList.add('active'); // Активируем первый раздел в контенте                                   
                 
             currentImage.classList.add('active');
+
+            currentBtn.classList.add('active');
         });
     }); 
 });

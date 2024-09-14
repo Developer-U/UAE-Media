@@ -20,7 +20,7 @@ $first_top_news_cat = get_field('first_top_news_cat_' . get_locale() . '', 'opti
 
         );
         $cat = get_category($first_top_news_cat);
-        $cat_link = get_category_link( $cat );
+        $cat_link = get_category_link($cat);
 
         query_posts($hot_news_args);
         ?>
@@ -36,7 +36,9 @@ $first_top_news_cat = get_field('first_top_news_cat_' . get_locale() . '', 'opti
                             <figure class="first-news-slider__slide position-relative">
                                 <?php
                                 if (has_post_thumbnail()) {
+                                    echo '<a class="picture-link" href=" ' . get_the_permalink() . '">';
                                     the_post_thumbnail('full', get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', TRUE));
+                                    echo '</a>';
                                 }
                                 ?>
                                 <span class="position-absolute"></span>
@@ -69,17 +71,17 @@ $first_top_news_cat = get_field('first_top_news_cat_' . get_locale() . '', 'opti
                             'posts_per_page' => 3,
                             'post_type' => 'post',
                             'post_status' => 'publish',
-                            'taxonomy'     => 'category',
+                            'taxonomy' => 'category',
                             'cat' => $first_top_news_cat,
 
                         );
-                        $cat = get_category($first_top_news_cat);                        
-
+                        $cat = get_category($first_top_news_cat);
+                        $cat_link = get_category_link($cat);
                         query_posts($hot_news_args);
                         ?>
 
                         <!-- Десктопная версия списка -->
-                        <div class="block-first__list d-none d-sm-block">                          
+                        <div class="block-first__list d-none d-sm-block">
                             <a class="button cat-button" href="<?php echo $cat_link; ?>"><?php echo $cat->name; ?></a>
 
                             <ul class="block-first__list first-list">
@@ -99,7 +101,7 @@ $first_top_news_cat = get_field('first_top_news_cat_' . get_locale() . '', 'opti
                             </ul>
                         </div>
 
-                        <figure class="block-first__picture d-none d-sm-block">
+                        <figure class="block-first__picture d-none d-sm-block position-relative">
                             <?php
                             $center_news_args = array(
                                 'orderby' => 'name',
@@ -116,8 +118,11 @@ $first_top_news_cat = get_field('first_top_news_cat_' . get_locale() . '', 'opti
                                     the_post();
 
                                     if (has_post_thumbnail()) {
+                                        echo '<a class="picture-link" href=" ' . get_the_permalink() . '">';
+                                        echo '<span class="on-image-title">' . get_the_title() . '</span>';
                                         the_post_thumbnail('full', get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', TRUE));
-                                    }
+                                        echo '</a>';
+                                    }                             
 
                                 }
                                 wp_reset_query();
@@ -144,7 +149,7 @@ $first_top_news_cat = get_field('first_top_news_cat_' . get_locale() . '', 'opti
 
                             );
                             $cat = get_category($first_bottom_left_news_cat);
-
+                            $cat_link = get_category_link($cat);
                             query_posts($hot_news_2_args);
                             ?>
                             <a class="button cat-button" href="<?php echo $cat_link; ?>"><?php echo $cat->name; ?></a>
@@ -165,7 +170,9 @@ $first_top_news_cat = get_field('first_top_news_cat_' . get_locale() . '', 'opti
                                 } ?>
                             </ul>
 
-                            <?php get_template_part('template-parts/button', 'wide'); ?>
+                            <a class="button wide" href="<?php echo $cat_link; ?>">
+                                <?php get_template_part('template-parts/button', 'wide'); ?>
+                            </a>
                         </div>
 
                     <?php }

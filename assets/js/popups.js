@@ -1,6 +1,5 @@
 window.addEventListener('DOMContentLoaded', function(){
     jQuery(function($) {
-        console.log('Работает');
     // Открытие / закрытие попапов
     //----- OPEN
     $('[data-popup-open]').on('click', function(e) {

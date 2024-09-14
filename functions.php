@@ -47,3 +47,8 @@ require get_stylesheet_directory() . '/includes/duplicate-types.php';
  * Search
  */
 require get_stylesheet_directory() . '/includes/get-search.php';
+
+/*Удаляет ссылки на теги*/
+add_filter('term_links-post_tag', function($links) {
+    return array_map('wp_strip_all_tags', $links);
+});
