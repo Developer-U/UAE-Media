@@ -14,6 +14,9 @@ do_action('blocksy:content:bottom');
 
 $logo_color = get_field('logo_color', 'options');
 $logo_white = get_field('logo_white', 'options');
+
+$mega_menu_cat_count = get_field('mega_menu_cat_count', 'options');
+$mega_menu_cat_posts_count = get_field('mega_menu_cat_posts_count', 'options');
 ?>
 </main>
 
@@ -37,12 +40,12 @@ do_action('blocksy:footer:before');
                 </a>
             </div>
 
-            <ul class="footer-list__cats footer-cat-list flex-wrap flex-lg-nowrap d-flex justify-content-between">
+            <ul class="footer-list__cats footer-cat-list d-grid flex-wrap">
                 <?php
                 $arg_cat = array(
                     'orderby' => 'name',
                     'order' => 'ASC',
-                    'number' => 3, // выведем только 3 категории
+                    'number' => 99, // выведем только 3 категории
                     'hide_empty' => 1,
                     'exclude' => '',
                     'include' => '',
@@ -65,7 +68,7 @@ do_action('blocksy:footer:before');
 
                         if ($query->have_posts()) ?>
 
-                        <li class="footer-cat-list footer-cat-item">
+                        <li class="footer-cat-list footer-cat-item col-auto">
                             <a class="footer-cat-item__title d-block" href="<?php echo $cat_link; ?>">
                                 <?php echo $cat->name; ?>
                             </a>
@@ -125,7 +128,7 @@ do_action('blocksy:footer:after');
                     $arg_cat = array(
                         'orderby' => 'name',
                         'order' => 'ASC',
-                        'number' => 3, // выведем только 3 категории
+                        'number' => $mega_menu_cat_count,
                         'hide_empty' => 1,
                         'exclude' => '',
                         'include' => '',
@@ -133,13 +136,13 @@ do_action('blocksy:footer:after');
                     );
                     $categories = get_categories($arg_cat);
 
-                    if ($categories) {
+                    if ($categories && $mega_menu_cat_count) {
                         foreach ($categories as $cat) {
                             $cat_link = get_category_link($cat);
                             $arg_posts = array(
                                 'orderby' => 'name',
                                 'order' => 'DESC',
-                                'posts_per_page' => 4,
+                                'posts_per_page' => $mega_menu_cat_posts_count,
                                 'post_type' => 'post',
                                 'post_status' => 'publish',
                                 'cat' => $cat->cat_ID,

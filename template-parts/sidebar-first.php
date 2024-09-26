@@ -97,7 +97,7 @@
                                         }
                                     }
                                     ?>
-                                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                    <a class="<?php if ($news_index == 0) { ?>first-link<?php } ?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </li>
 
                             <?php endwhile;

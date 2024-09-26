@@ -4,6 +4,7 @@
  */
 
 $first_top_news_cat = get_field('first_top_news_cat_' . get_locale() . '', 'options');
+$first_top_news_right_cat = get_field('first_top_news_right_cat_' . get_locale() . '', 'options');
 ?>
 
 <section class="block first">
@@ -101,33 +102,39 @@ $first_top_news_cat = get_field('first_top_news_cat_' . get_locale() . '', 'opti
                             </ul>
                         </div>
 
-                        <figure class="block-first__picture d-none d-sm-block position-relative">
-                            <?php
-                            $center_news_args = array(
-                                'orderby' => 'name',
-                                'order' => 'DESC',
-                                'posts_per_page' => 1,
-                                'post_type' => 'post',
-                                'post_status' => 'publish',
-                                'cat' => 48,
-                            );
-                            query_posts($center_news_args);
+                        <?php if ($first_top_news_right_cat) { ?>
 
-                            if (have_posts()) {
-                                while (have_posts()) {
-                                    the_post();
+                            <figure class="block-first__picture d-none d-sm-block position-relative">
+                                <?php
+                                $center_news_args = array(
+                                    'orderby' => 'name',
+                                    'order' => 'DESC',
+                                    'posts_per_page' => 1,
+                                    'post_type' => 'post',
+                                    'post_status' => 'publish',
+                                    'cat' => $first_top_news_right_cat,
+                                );
+                                query_posts($center_news_args);
+                                $cat = get_category($first_top_news_right_cat);
+                                $cat_link = get_category_link($cat);
 
-                                    if (has_post_thumbnail()) {
-                                        echo '<a class="picture-link" href=" ' . get_the_permalink() . '">';
-                                        echo '<span class="on-image-title">' . get_the_title() . '</span>';
-                                        the_post_thumbnail('full', get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', TRUE));
-                                        echo '</a>';
-                                    }                             
+                                if (have_posts()) {
+                                    while (have_posts()) {
+                                        the_post();
 
-                                }
-                                wp_reset_query();
-                            } ?>
-                        </figure>
+                                        if (has_post_thumbnail()) {
+                                            echo '<a class="picture-link" href=" ' . get_the_permalink() . '">';
+                                            echo '<span class="on-image-title">' . get_the_title() . '</span>';
+                                            the_post_thumbnail('full', get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', TRUE));
+                                            echo '</a>';
+                                        }
+
+                                    }
+                                    wp_reset_query();
+                                } ?>
+                            </figure>
+                            
+                        <? } ?>
                     </div>
                 <?php }
 

@@ -39,7 +39,7 @@
                 <div class="block-news-item__data d-flex align-items-center justify-content-between">
                     <p class="col-auto"><?php echo get_the_date(); ?></p>
 
-                    <p class="col-auto"><?php echo get_the_author(); ?></p>
+                   
                 </div>
 
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
