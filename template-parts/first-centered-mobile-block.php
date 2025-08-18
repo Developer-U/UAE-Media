@@ -46,7 +46,7 @@
                     $target = $n++;
                     $cat_link = get_category_link($cat);
                     $arg_posts = array(
-                        'orderby' => 'name',
+                        'orderby' => 'date',
                         'order' => 'DESC',
                         'posts_per_page' => 5,
                         'post_type' => 'post',

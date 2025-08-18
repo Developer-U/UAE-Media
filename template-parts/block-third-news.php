@@ -14,7 +14,7 @@ if ($third_news_cat) {
             <!-- Мобильная версия списка - слайдером -->
             <?php
             $hot_news_args = array(
-                'orderby' => 'name',
+                'orderby' => 'date',
                 'order' => 'DESC',
                 'posts_per_page' => 5,
                 'post_type' => 'post',
@@ -62,7 +62,7 @@ if ($third_news_cat) {
             <!-- Десктопная версия списка -->
             <?php
             $third_news_args = array(
-                'orderby' => 'name',
+                'orderby' => 'date',
                 'order' => 'DESC',
                 'posts_per_page' => 5,
                 'post_type' => 'post',

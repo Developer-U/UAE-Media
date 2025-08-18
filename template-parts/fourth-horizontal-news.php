@@ -14,7 +14,7 @@ if ($fourth_news_cat) {
             <!-- Мобильная версия списка -->
             <?php
             $fourth_news_args = array(
-                'orderby' => 'name',
+                'orderby' => 'date',
                 'order' => 'DESC',
                 'posts_per_page' => 4,
                 'post_type' => 'post',
@@ -37,7 +37,7 @@ if ($fourth_news_cat) {
             <!-- Десктопная версия списка -->
             <?php
             $fourth_news_args = array(
-                'orderby' => 'name',
+                'orderby' => 'date',
                 'order' => 'DESC',
                 'posts_per_page' => 4,
                 'post_type' => 'post',

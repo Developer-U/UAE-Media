@@ -14,7 +14,7 @@ if ($sixth_news_cat) {
             <!-- Мобильная версия списка - слайдером -->
             <?php
             $sixth_news_args = array(
-                'orderby' => 'name',
+                'orderby' => 'date',
                 'order' => 'DESC',
                 'posts_per_page' => 5,
                 'post_type' => 'post',
@@ -67,7 +67,7 @@ if ($sixth_news_cat) {
             <!-- Десктопная версия списка -->
             <?php
             $sixth_news_args = array(
-                'orderby' => 'name',
+                'orderby' => 'date',
                 'order' => 'DESC',
                 'posts_per_page' => 5,
                 'post_type' => 'post',

@@ -156,3 +156,20 @@ section.block.fifth {
 .post .share p {
     margin-bottom: 0;
 }
+
+.page-numbers {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.page-numbers li span,
+.page-numbers li a {
+    font-weight: bold;
+    color: var(--black);
+}
+
+.page-numbers li span.current {
+    font-size: 30px;
+    color: var(--red);
+}

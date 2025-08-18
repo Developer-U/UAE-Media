@@ -11,7 +11,7 @@ if ($first_bottom_centered_news_cat) { ?>
         <div>
             <?php
             $uae_news_args = array(
-                'orderby' => 'name',
+                'orderby' => 'date',
                 'order' => 'DESC',
                 'posts_per_page' => 3,
                 'post_type' => 'post',

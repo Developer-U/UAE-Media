@@ -11,8 +11,8 @@
         <ul class="categories-list d-grid">
             <?php
             $arg_cat = array(
-                'orderby' => 'name',
-                'order' => 'ASC',
+                'orderby' => 'date',
+                'order' => 'DESC',
                 'hide_empty' => 1,
                 'exclude' => '',
                 'include' => '',
@@ -34,7 +34,7 @@
                         <div class="cat-item__border">
                             <?php
                             $arg_posts = array(
-                                'orderby' => 'name',
+                                'orderby' => 'date',
                                 'order' => 'DESC',
                                 'posts_per_page' => 4,
                                 'post_type' => 'post',

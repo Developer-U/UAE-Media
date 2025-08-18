@@ -12,7 +12,7 @@ $first_top_news_right_cat = get_field('first_top_news_right_cat_' . get_locale()
         <!-- Мобильная версия списка - слайдером -->
         <?php
         $hot_news_args = array(
-            'orderby' => 'name',
+            'orderby' => 'date',
             'order' => 'DESC',
             'posts_per_page' => 3,
             'post_type' => 'post',
@@ -67,7 +67,7 @@ $first_top_news_right_cat = get_field('first_top_news_right_cat_' . get_locale()
                         <?php
 
                         $hot_news_args = array(
-                            'orderby' => 'name',
+                            'orderby' => 'date',
                             'order' => 'DESC',
                             'posts_per_page' => 3,
                             'post_type' => 'post',
@@ -107,7 +107,7 @@ $first_top_news_right_cat = get_field('first_top_news_right_cat_' . get_locale()
                             <figure class="block-first__picture d-none d-sm-block position-relative">
                                 <?php
                                 $center_news_args = array(
-                                    'orderby' => 'name',
+                                    'orderby' => 'date',
                                     'order' => 'DESC',
                                     'posts_per_page' => 1,
                                     'post_type' => 'post',
@@ -133,7 +133,7 @@ $first_top_news_right_cat = get_field('first_top_news_right_cat_' . get_locale()
                                     wp_reset_query();
                                 } ?>
                             </figure>
-                            
+
                         <? } ?>
                     </div>
                 <?php }
@@ -147,7 +147,7 @@ $first_top_news_right_cat = get_field('first_top_news_right_cat_' . get_locale()
                         <div class="block-first__list">
                             <?php
                             $hot_news_2_args = array(
-                                'orderby' => 'name',
+                                'orderby' => 'date',
                                 'order' => 'DESC',
                                 'posts_per_page' => 5,
                                 'post_type' => 'post',

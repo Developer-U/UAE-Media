@@ -18,7 +18,7 @@
             <div>
                 <?php
                 $arg_cat = array(
-                    'orderby' => 'name',
+                    'orderby' => 'date',
                     'order' => 'ASC',
                     'hide_empty' => 1,
                     'exclude' => '',
@@ -67,7 +67,7 @@
                         $target = $n++;
                         $cat_link = get_category_link($cat);
                         $arg_posts = array(
-                            'orderby' => 'name',
+                            'orderby' => 'date',
                             'order' => 'DESC',
                             'posts_per_page' => 5,
                             'post_type' => 'post',

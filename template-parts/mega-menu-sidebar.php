@@ -5,7 +5,7 @@
  */
 
 $mega_arg_posts = array(
-    'orderby' => 'name',
+    'orderby' => 'date',
     'order' => 'DESC',
     'posts_per_page' => 2,
     'post_type' => 'post',
