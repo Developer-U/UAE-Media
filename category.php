@@ -16,6 +16,8 @@ add_filter('get_the_archive_title', function ($title) {
 
 get_header();
 
+$term = get_queried_object();
+
 $current_page = !empty($_GET['num']) ? $_GET['num'] : 1;
 
 $category_id = get_query_var('cat');
@@ -51,14 +53,16 @@ $query_news = new WP_Query($arg_news);
 				</ul>
 
 				<?php
+				echo '<pre>' .$term->slug. '</pre>';
+
 				echo paginate_links(array(
 					'prev_next' => true,
-					'prev_text' => __('🠔'),
-					'next_text' => __('🠖'),
+					'prev_text' => __('&#129144;'),
+					'next_text' => __('&#129146;'),
 					'end_size' => 2,
 					'mid_size' => 2,
 					'type' => 'list',
-					'base' => site_url() . '/category/' . $category->slug . '/%_%', // 'blog' - должно совпадать со слагом страницы Блога в админке
+					'base' => site_url() . '/category/' . $term->slug . '/%_%', // 'blog' - должно совпадать со слагом страницы Блога в админке
 					'format' => '?num=%#%', // Здесь - переменная 'num'. которую задали на стр. 16. Если что, поменяй.
 					'total' => $query_news->max_num_pages,
 					'current' => $current_page,
